@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="3">
+          <ion-avatar>
+            <img src="../../assets/img/personajes/P3.3.png">
+          </ion-avatar>
+        </ion-col>
+        <ion-col size="3" (click)="respeto()">
+          <ion-avatar>
+            <img src="../../assets/img/acciones/1-respetoalanaturaleza.png">
+          </ion-avatar>
+        </ion-col>
+        <ion-col size="3" (click)="desarrollo()">
+          <ion-avatar>
+            <img src="../../assets/img/acciones/1-desarrollosocial.png">
+          </ion-avatar>
+        </ion-col>
+        <ion-col size="3" (click)="bienestar()">
+            <ion-avatar>
+              <img src="../../assets/img/acciones/1-bienestarpersonal.png">
+            </ion-avatar>
+          </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-buttons slot="end">
+      <ion-menu-button color="success"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card class="card1">
+        <ion-card-content>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <ion-text color="light" class="centrar1">
+                  <h1>VIAJA EN BICICLETA</h1>
+                </ion-text>
+              </ion-col>  
+            </ion-row>
+            <ion-row>
+              <ion-col class="centrar1">
+                <ion-button color="light">ACEPTAR RETO</ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+          <ion-fab vertical="bottom" horizontal="end" slot="fixed" fill="clear">
+            <ion-fab-button color="light">
+              <ion-icon name="keypad"></ion-icon>
+            </ion-fab-button>
+          </ion-fab>
+        </ion-card-content>
+      </ion-card>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title>
+      <ion-icon name="leaf" color="success"></ion-icon>
+      <ion-icon name="leaf" color="success"></ion-icon>
+      <ion-icon name="leaf" color="success"></ion-icon>
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>

@@ -9,3 +9,60 @@
 @import '~@ionic/angular/css/text-alignment.css';
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
+
+.alertaRespeto{
+    .alert-head{
+        background-color: #92b649;
+    }
+    .alert-title{
+        color: white;
+    }
+    .alert-message{
+        background-color: #92b649;
+        color: white;   
+    }
+    .alert-button-group{
+        background-color: #92b649;
+    }
+    .alert-button-inner{
+        color: white;
+    }
+}
+
+.alertaDesarrollo{
+    .alert-head{
+        background-color: #ffb147;
+    }
+    .alert-title{
+        color: white;
+    }
+    .alert-message{
+        background-color: #ffb147;
+        color: white;   
+    }
+    .alert-button-group{
+        background-color: #ffb147;
+    }
+    .alert-button-inner{
+        color: white;
+    }
+}
+
+.alertaBienestar{
+    .alert-head{
+        background-color: #649ec4;
+    }
+    .alert-title{
+        color: white;
+    }
+    .alert-message{
+        background-color: #649ec4;
+        color: white;   
+    }
+    .alert-button-group{
+        background-color: #649ec4;
+    }
+    .alert-button-inner{
+        color: white;
+    }
+}
