@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController, AlertController } from '@ionic/angular';
-import { RetoPage } from '../reto/reto.page';
+import { RetoComponent } from './reto/reto.component';
 
 @Component({
   selector: 'app-home',
@@ -51,13 +51,13 @@ export class HomePage implements OnInit {
     await alertaBienestar.present();
   }
 
-  // async cumplirReto(){
-  //   const modal1 = await this.controlModal.create({
-  //     component: RetoPage,
-  //     componentProps: { value: 123 }
-  //   });
-  //   await modal1.present();
-  // }
+  async cumplirReto(){
+    const modal1 = await this.controlModal.create({
+      component: RetoComponent,
+      componentProps: { value: 123 }
+    });
+    await modal1.present();
+  }
 
   ngOnInit() {
   }

@@ -1,12 +1,9 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="end">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <ion-title>tutorial</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-slides pager="true">
+  <ion-slide class="step-one">
+    <ion-button (click)="next()">Siguiente</ion-button>
+  </ion-slide>
 
-<ion-content padding>
-  <h1>HOLA! {{id2}}</h1>
-</ion-content>
+  <ion-slide class="step-two">
+    <ion-button (click)="finTutorial()">¡Comencemos!</ion-button> 
+  </ion-slide>
+</ion-slides>

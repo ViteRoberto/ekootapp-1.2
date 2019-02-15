@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Storage } from '@ionic/storage';
+import { Router } from '@angular/router';
+import { IonSlides } from '@ionic/angular';
 
 @Component({
   selector: 'app-tutorial',
@@ -8,13 +10,21 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class TutorialPage implements OnInit {
 
-  id2;
+  constructor(private guardar: Storage, private router: Router) { }
 
-  constructor(private activa: ActivatedRoute) { }
+  @ViewChild(IonSlides)
+  slides: IonSlides;
+
+  async finTutorial(){
+    await this.guardar.set('tutorialCompleto', true);
+    this.router.navigateByUrl('/');
+  }
+
+  next(){
+    this.slides.slideNext();
+  }
 
   ngOnInit() {
-    this.id2 = this.activa.snapshot.paramMap.get('id');
-    console.log(this.id2);
   }
 
 }

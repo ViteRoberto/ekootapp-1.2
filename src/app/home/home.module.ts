@@ -7,12 +7,16 @@ import { IonicModule } from '@ionic/angular';
 
 import { HomePage } from './home.page';
 import { SharedModule } from '../shared/shared.module';
-// import { RetoPage } from '../reto/reto.page';
+import { RetoComponent } from './reto/reto.component';
 
 const routes: Routes = [
   {
     path: '',
     component: HomePage
+  },
+  {
+    path: 'reto',
+    component: RetoComponent
   }
 ];
 
@@ -24,7 +28,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [HomePage],
+  declarations: [HomePage, RetoComponent],
   entryComponents: []
 })
 export class HomePageModule {}

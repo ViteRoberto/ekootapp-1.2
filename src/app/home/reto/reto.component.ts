@@ -3,10 +3,10 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 
 @Component({
   selector: 'app-reto',
-  templateUrl: './reto.page.html',
-  styleUrls: ['./reto.page.scss'],
+  templateUrl: './reto.component.html',
+  styleUrls: ['./reto.component.scss']
 })
-export class RetoPage implements OnInit {
+export class RetoComponent implements OnInit {
 
   constructor(public camara: Camera) { }
 
@@ -24,7 +24,7 @@ export class RetoPage implements OnInit {
     }, (err) => {
       // Handle error
      });
-  }
+  }  
 
   ngOnInit() {
   }

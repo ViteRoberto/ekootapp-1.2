@@ -10,10 +10,6 @@ export class AcsPage implements OnInit {
 
   constructor( private router: Router) {}
 
-  tutorial(){
-    this.router.navigateByUrl('/tutorial');
-  }
-
   ngOnInit() {
   }
 

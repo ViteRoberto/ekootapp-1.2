@@ -1,22 +1,20 @@
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RetoPage } from './reto.page';
+import { RetoComponent } from './reto.component';
 
-describe('RetoPage', () => {
-  let component: RetoPage;
-  let fixture: ComponentFixture<RetoPage>;
+describe('RetoComponent', () => {
+  let component: RetoComponent;
+  let fixture: ComponentFixture<RetoComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RetoPage ],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      declarations: [ RetoComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RetoPage);
+    fixture = TestBed.createComponent(RetoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
