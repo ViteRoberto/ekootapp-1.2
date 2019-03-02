@@ -1,0 +1,20 @@
+ion-content{
+    --background: #fff url("../../assets/img/bg/inicial.jpg") no-repeat center center / cover;
+    --keyboard-offset: 100%;
+}
+
+.fondo{
+    background-image: url("../../assets/img/bg/inicial.jpg");
+    background-size: cover;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+.input-login{
+    background-color: rgba($color: #6c9c4c, $alpha: 0.5);
+    color: #ffffff;
+    font-size: large;
+}

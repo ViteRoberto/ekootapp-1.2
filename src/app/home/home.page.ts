@@ -1,6 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ModalController, AlertController } from '@ionic/angular';
 import { RetoComponent } from './reto/reto.component';
+import { Router } from '@angular/router';
+
+import { AuthService } from '../services/auth.service';
+
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 
 @Component({
   selector: 'app-home',
@@ -9,16 +14,33 @@ import { RetoComponent } from './reto/reto.component';
 })
 export class HomePage implements OnInit {
 
-  constructor(public controlModal: ModalController, public alerta: AlertController) { }
+  constructor(private social: SocialSharing, public controlModal: ModalController, public alerta: AlertController, public router:Router, public auth: AuthService) { }
+
+  async compartir(){
+    this.social.shareViaFacebook('Yo ya me uní a EKOOT, ¿Y tú?').then(() => {
+      // console.log("YEAH");
+    }).catch(e => {
+    })
+    // const alertaCompartir = await this.alerta.create({
+    //   header: 'SALUDOS',
+    //   message: '¡Enhorabuena '+this.auth.infoFacebook.displayName+'! Cumpliste tu primer reto',
+    //   buttons: ['¡Cool!']
+    // });
+    // await alertaCompartir.present();
+  }
 
   async datosPerfil(){
     const alertaPerfil = await this.alerta.create({
-      header: 'ALERTA',
-      subHeader: 'Hola',
-      message: 'Aqui va una imagen',
+      header: 'Perfil',
+      subHeader: this.auth.infoFacebook.displayName,
+      message: '<img src="'+this.auth.infoFacebook.photoURL+'">',
       buttons: ['OK']
     });
     await alertaPerfil.present();
+  }
+
+  async abrirInicial(){
+    this.router.navigateByUrl('/inicial');
   }
 
   async respeto(){

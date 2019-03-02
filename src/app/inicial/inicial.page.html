@@ -1,0 +1,17 @@
+<ion-content padding>
+  <!-- <div padding class="fondo"> -->
+    <br>
+    <ion-row>
+      <ion-col size="8" offset="2">
+        <img src="../../assets/icon/logo05.png" alt="">
+      </ion-col>
+    </ion-row>
+  
+    <ion-input type="text" class="input-login" placeholder="Usuario" #user (keyup)="moverFocus($event,pass)" text-center></ion-input>
+    <br>
+    <ion-input type="password" class="input-login" placeholder="Contraseña" #pass text-center></ion-input> 
+    <br>
+    <ion-button expand="block" color="ecology">Iniciar Sesión</ion-button>
+  
+    <ion-button expand="block" color="facebook" (click)="entrar()"><ion-icon name="logo-facebook"></ion-icon> Entrar con Facebook</ion-button>
+</ion-content>

@@ -20,6 +20,9 @@ import { AngularFireMessagingModule } from '@angular/fire/messaging';
 import { Camera } from '@ionic-native/camera/ngx';
 import { IonicStorageModule } from '@ionic/storage';
 
+import { Facebook } from '@ionic-native/facebook/ngx';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -29,6 +32,8 @@ import { IonicStorageModule } from '@ionic/storage';
     Firebase,
     StatusBar,
     SplashScreen,
+    Facebook,
+    SocialSharing,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

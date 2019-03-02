@@ -3,6 +3,7 @@
 
 /** Ionic CSS Variables **/
 :root {
+
   /** primary **/
   --ion-color-primary: #3880ff;
   --ion-color-primary-rgb: 56, 128, 255;
@@ -74,4 +75,34 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+}
+
+/** ekoot **/
+.ion-color-ekoot{
+   --ion-color-base: #482665;
+   --ion-color-base-rgb: 72, 38, 101;
+   --ion-color-contrast: #ffffff;
+   --ion-color-contrast-rgb: 255, 255, 255;
+   --ion-color-shade: #3f2159;
+   --ion-color-tint: #5a3c74;
+}
+
+/** ecology **/
+.ion-color-ecology{
+  --ion-color-base: #6c9c4c;
+  --ion-color-base-rgb: 108, 156, 76;
+  --ion-color-contrast: #ffffff;
+  --ion-color-contrast-rgb: 255, 255, 255;
+  --ion-color-shade: #5f8943;
+  --ion-color-tint: #7ba65e;
+}
+
+/** facebook **/
+.ion-color-facebook{
+  --ion-color-base: #6d84b4;
+  --ion-color-base-rgb: 109, 132, 180;
+  --ion-color-contrast: #ffffff;
+  --ion-color-contrast-rgb: 255, 255, 255;
+  --ion-color-shade: #60749e;
+  --ion-color-tint: #7c90bc;
 }
