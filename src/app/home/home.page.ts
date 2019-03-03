@@ -18,15 +18,19 @@ export class HomePage implements OnInit {
 
   async compartir(){
     this.social.shareViaFacebook('Yo ya me uní a EKOOT, ¿Y tú?').then(() => {
-      // console.log("YEAH");
+      this.alertaAmber('¡ÉXITO!');
     }).catch(e => {
+      this.alertaAmber(e);
     })
-    // const alertaCompartir = await this.alerta.create({
-    //   header: 'SALUDOS',
-    //   message: '¡Enhorabuena '+this.auth.infoFacebook.displayName+'! Cumpliste tu primer reto',
-    //   buttons: ['¡Cool!']
-    // });
-    // await alertaCompartir.present();
+  }
+
+  async alertaAmber(e){
+    const alertaCompartir = await this.alerta.create({
+      header: '¡ALERTA!',
+      message: e,
+      buttons: ['Ok']
+    });
+    await alertaCompartir.present();
   }
 
   async datosPerfil(){
