@@ -17,7 +17,7 @@ export class HomePage implements OnInit {
   constructor(private social: SocialSharing, public controlModal: ModalController, public alerta: AlertController, public router:Router, public auth: AuthService) { }
 
   async compartir(){
-    this.social.shareViaFacebook('Yo ya me uní a EKOOT, ¿Y tú?').then(() => {
+    this.social.shareViaFacebookWithPasteMessageHint(null,null,'ekoot.mx',null).then(() => {
       this.alertaAmber('¡ÉXITO!');
     }).catch(e => {
       this.alertaAmber(e);
@@ -26,7 +26,7 @@ export class HomePage implements OnInit {
 
   async alertaAmber(e){
     const alertaCompartir = await this.alerta.create({
-      header: '¡ALERTA!',
+      header: 'ALERTA',
       message: e,
       buttons: ['Ok']
     });
