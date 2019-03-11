@@ -1,13 +1,42 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+
+export interface Empresa{
+  nombre: string;
+  descripcion: string;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class DbService {
-  constructor(private afs: AngularFirestore) {}
+
+  private empresasColeccion: AngularFirestoreCollection<Empresa>;
+  private empresas: Observable<Empresa[]>;
+
+  constructor(private afs: AngularFirestore) {
+    this.empresasColeccion = afs.collection<Empresa>('empresas');
+
+    this.empresas = this.empresasColeccion.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const informacion = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { id, ...informacion };
+        });
+      })
+    );
+  }
+
+  getEmpresas(){
+    return this.empresas;
+  }
+
+  getEmpresa(id){
+    return this.empresasColeccion.doc<Empresa>(id).valueChanges();
+  }
 
   collection$(path, query?) {
     return this.afs

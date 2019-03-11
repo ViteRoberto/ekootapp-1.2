@@ -106,3 +106,16 @@
   --ion-color-shade: #60749e;
   --ion-color-tint: #7c90bc;
 }
+
+/** fuentes GandhiSans **/
+@font-face{
+  font-family: 'Gandhi';
+  src: url('../assets/font/GandhiSans-Regular.otf');
+  src: url('../assets/font/GandhiSans-Italic.otf');
+  src: url('../assets/font/GandhiSans-Bold.otf');
+  src: url('../assets/font/GandhiSans-BoldItalic.otf');
+}
+
+*{
+  font-family: 'Gandhi';
+}

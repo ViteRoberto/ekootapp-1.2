@@ -12,6 +12,7 @@ import { AppComponent } from './app.component';
 import { Firebase } from '@ionic-native/firebase/ngx';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireFunctionsModule } from '@angular/fire/functions';
@@ -26,7 +27,7 @@ import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, AngularFireModule.initializeApp(environment.firebase), AngularFirestoreModule, AngularFireAuthModule, AngularFireFunctionsModule, AngularFireMessagingModule, IonicStorageModule.forRoot()],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, AngularFireModule.initializeApp(environment.firebase), AngularFireDatabaseModule, AngularFirestoreModule, AngularFireAuthModule, AngularFireFunctionsModule, AngularFireMessagingModule, IonicStorageModule.forRoot()],
   providers: [
     Camera,
     Firebase,

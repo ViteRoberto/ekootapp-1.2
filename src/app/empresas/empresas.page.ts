@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { Empresa, DbService } from './../services/db.service';
+
 @Component({
   selector: 'app-empresas',
   templateUrl: './empresas.page.html',
@@ -8,13 +10,14 @@ import { Router } from '@angular/router';
 })
 export class EmpresasPage implements OnInit {
 
-  constructor(private router: Router) { }
+  empresas: Empresa[];
 
-  async reto(){
-    this.router.navigateByUrl('/reto');
-  }
+  constructor(private router: Router, private empresaServicio: DbService) { }
 
   ngOnInit() {
+    this.empresaServicio.getEmpresas().subscribe(res => {
+      this.empresas = res;
+    })
   }
 
 }
