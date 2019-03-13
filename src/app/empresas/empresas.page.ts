@@ -14,6 +14,10 @@ export class EmpresasPage implements OnInit {
 
   constructor(private router: Router, private empresaServicio: DbService) { }
 
+  detalles(){
+    this.router.navigateByUrl('/empresa');
+  }
+
   ngOnInit() {
     this.empresaServicio.getEmpresas().subscribe(res => {
       this.empresas = res;

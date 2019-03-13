@@ -24,6 +24,9 @@ import { IonicStorageModule } from '@ionic/storage';
 import { Facebook } from '@ionic-native/facebook/ngx';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 
+import { AppAvailability } from '@ionic-native/app-availability/ngx';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -35,6 +38,9 @@ import { SocialSharing } from '@ionic-native/social-sharing/ngx';
     SplashScreen,
     Facebook,
     SocialSharing,
+    AppAvailability,
+    InAppBrowser,
+    // InAppBrowserObject,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

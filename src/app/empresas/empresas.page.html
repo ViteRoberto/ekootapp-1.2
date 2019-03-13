@@ -1,15 +1,8 @@
-<!-- <ion-header>
-  <ion-toolbar>
-    <ion-title>Empresas</ion-title>
-  </ion-toolbar>
-</ion-header> -->
-
 <ion-content padding>
-  ion-item
   <ion-list>
 
-    <ion-item *ngFor="let item of empresas" lines="inset" button>
-      <ion-img src="{{item.logo}}"></ion-img>
+    <ion-item *ngFor="let item of empresas" lines="inset" button [routerLink]="['/empresa',item.id,item.nombre,item.logo,item.imagen,item.web,item.facebook,item.fbid,item.instagram,item.descripcion,item.impactos]" ion-text-center>
+      <ion-img src="{{item.logo}}" class="centrar-imagen"></ion-img>
     </ion-item>
 
   </ion-list>
