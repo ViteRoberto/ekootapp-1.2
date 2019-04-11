@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      {{id}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="card1" *ngFor="let reto of retos">
+    <ion-card-content class="fondo">
+      <div class="arreglado">
+        <ion-grid>
+            <ion-row>
+              <ion-col>
+                <ion-text color="light" class="centrar1">
+                  <h1>{{reto.fraseimagen}}</h1>
+                </ion-text>
+              </ion-col>  
+            </ion-row>
+            <ion-row>
+              <ion-col class="centrar1">
+                <ion-button color="light" (click)="cumplirReto()">ACEPTAR RETO</ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+      </div>
+      <ion-img [src]="reto.imagen" class="fondo"></ion-img>
+    </ion-card-content>
+  </ion-card>
+    <!-- <ion-card class="card1" *ngFor="let reto of retos">
+        <ion-card-content>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <ion-text color="light" class="centrar1">
+                  <h1>{{reto.fraseimagen}}</h1>
+                </ion-text>
+              </ion-col>  
+            </ion-row>
+            <ion-row>
+              <ion-col class="centrar1">
+                <ion-button color="light" (click)="cumplirReto()">ACEPTAR RETO</ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
+      </ion-card> -->
+</ion-content>

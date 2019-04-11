@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AppAvailability } from '@ionic-native/app-availability/ngx';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { Platform, AlertController } from '@ionic/angular';
+
+import { DbService } from './../services/db.service';
 
 @Component({
   selector: 'app-empresa',
@@ -11,31 +13,30 @@ import { Platform, AlertController } from '@ionic/angular';
 })
 export class EmpresaPage implements OnInit {
 
-  id:string;
-  nombre:string;
-  logo:string;
-  imagen:string;
-  web:string;
-  facebook:string;
-  fbid:string;
-  instagram:string;
-  descripcion:string;
-  impactos:string;
+  empresa:any;
+  impactos:any;
+  categorias:any;
 
-  constructor(public alerta: AlertController, private enApp: InAppBrowser, public plataforma: Platform, private rutaActiva: ActivatedRoute, private disponible: AppAvailability) { }
+  id:string;
+
+  constructor(private router: Router, private empresaServicio: DbService, public alerta: AlertController, private enApp: InAppBrowser, public plataforma: Platform, private rutaActiva: ActivatedRoute, private disponible: AppAvailability) { }
+
+  async retos(){
+    this.router.navigateByUrl('/retos/'+this.id);
+  }
 
   abrirUrl(app: string){
     if(this.plataforma.is('android')){
-      var appUrl = 'fb://page/'+this.fbid;
+      var appUrl = 'fb://page/'+this.empresa.fbid;
     }else{
-      var appUrl = 'fb://page?id='+this.fbid;
+      var appUrl = 'fb://page?id='+this.empresa.fbid;
     }
     switch(app){
       case 'facebook':
-        this.lanzarApp('fb://','com.facebook.katana',appUrl,'https://www.facebook.com/'+this.facebook);
+        this.lanzarApp('fb://','com.facebook.katana',appUrl,'https://www.facebook.com/'+this.empresa.facebook);
         break;
       case 'instagram':
-        this.lanzarApp('instagram://', 'com.instagram.android','instagram://user?username='+this.instagram,'https://instagram.com/'+this.instagram);
+        this.lanzarApp('instagram://', 'com.instagram.android','instagram://user?username='+this.empresa.instagram,'https://instagram.com/'+this.empresa.instagram);
         break;
     }
   }
@@ -63,15 +64,18 @@ export class EmpresaPage implements OnInit {
   ngOnInit() {
 
     this.id = this.rutaActiva.snapshot.paramMap.get('id');
-    this.nombre = this.rutaActiva.snapshot.paramMap.get('nombre');
-    this.logo = this.rutaActiva.snapshot.paramMap.get('logo');
-    this.imagen = this.rutaActiva.snapshot.paramMap.get('imagen');
-    this.web = this.rutaActiva.snapshot.paramMap.get('web');
-    this.facebook = this.rutaActiva.snapshot.paramMap.get('facebook');
-    this.fbid = this.rutaActiva.snapshot.paramMap.get('fbid');
-    this.instagram = this.rutaActiva.snapshot.paramMap.get('instagram');
-    this.descripcion = this.rutaActiva.snapshot.paramMap.get('descripcion');
     
+    this.empresaServicio.getEmpresa(this.id).subscribe(res => {
+      this.empresa = res;
+    })
+
+    this.empresaServicio.getImpactos(this.id).subscribe(res => {
+      this.impactos = res;
+    })
+
+    this.empresaServicio.getCategorias(this.id).subscribe(res => {
+      this.categorias = res;
+    })
 
   }
 

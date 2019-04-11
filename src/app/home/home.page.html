@@ -9,17 +9,17 @@
         </ion-col>
         <ion-col size="3" (click)="respeto()">
           <ion-avatar>
-            <img src="../../assets/img/acciones/1-respetoalanaturaleza.png">
+            <img src="../../assets/img/acciones/rn.png">
           </ion-avatar>
         </ion-col>
         <ion-col size="3" (click)="desarrollo()">
           <ion-avatar>
-            <img src="../../assets/img/acciones/1-desarrollosocial.png">
+            <img src="../../assets/img/acciones/ds.png">
           </ion-avatar>
         </ion-col>
         <ion-col size="3" (click)="bienestar()">
             <ion-avatar>
-              <img src="../../assets/img/acciones/1-bienestarpersonal.png">
+              <img src="../../assets/img/acciones/bp.png">
             </ion-avatar>
           </ion-col>
       </ion-row>
@@ -31,7 +31,28 @@
 </ion-header>
 
 <ion-content>
-    <ion-card class="card1">
+  <ion-card class="card1" *ngFor="let reto of retos">
+      <ion-card-content class="fondo">
+        <div class="arreglado">
+          <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <ion-text color="light" class="centrar1">
+                    <h1>{{reto.fraseimagen}}</h1>
+                  </ion-text>
+                </ion-col>  
+              </ion-row>
+              <ion-row>
+                <ion-col class="centrar1">
+                  <ion-button color="light" (click)="cumplirReto()">ACEPTAR RETO</ion-button>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+        </div>
+        <ion-img [src]="reto.imagen" class="fondo"></ion-img>
+      </ion-card-content>
+    </ion-card>  
+    <!-- <ion-card class="card1">
         <ion-card-content>
           <ion-grid>
             <ion-row>
@@ -54,7 +75,7 @@
           </ion-fab>
         </ion-card-content>
       </ion-card>
-      <ion-button color="warning" (click)="compartir()">Compartir</ion-button>
+      <ion-button color="warning" (click)="compartir()">Compartir</ion-button> -->
 </ion-content>
 
 <ion-footer>

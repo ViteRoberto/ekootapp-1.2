@@ -1,10 +1,10 @@
 <ion-content padding>
   <ion-list>
 
-    <ion-item *ngFor="let item of empresas" lines="inset" button [routerLink]="['/empresa',item.id,item.nombre,item.logo,item.imagen,item.web,item.facebook,item.fbid,item.instagram,item.descripcion,item.impactos]" ion-text-center>
+    <ion-item *ngFor="let item of empresas" lines="inset" button [routerLink]="['/empresa',item.id]" ion-text-center>
       <ion-img src="{{item.logo}}" class="centrar-imagen"></ion-img>
     </ion-item>
-
+    
   </ion-list>
 
 </ion-content>

@@ -1,40 +1,64 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <ion-title>{{nombre}}</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content padding>
-  <ion-img src="{{logo}}"></ion-img>
-  <ion-card>
+<ion-content>
+  <ion-card color="light">
     <ion-card-header>
-      <ion-button expand="block" color="ecology">Retos</ion-button>
+      <ion-img src="{{empresa.logo}}"></ion-img>  
+      <ion-grid>
+        <ion-row>
+          <ion-col *ngFor="let impacto of impactos">
+            <ion-avatar>
+              <ion-img src="../../assets/img/acciones/{{impacto.abreviatura}}.png"></ion-img>
+            </ion-avatar>
+          </ion-col>
+        </ion-row>
+      </ion-grid>    
     </ion-card-header>
     <ion-card-content>
-      <ion-item button color="facebook" (click)="abrirUrl('facebook')">
-        <ion-icon name="logo-facebook" slot="start"></ion-icon>
-        <ion-label>Facebook</ion-label>
-      </ion-item>
-      <ion-item button color="instagram" (click)="abrirUrl('instagram')">
-        <ion-icon name="logo-instagram" slot="start"></ion-icon>
-        <ion-label>Instagram</ion-label>
-      </ion-item>
-      <ion-item button color="primary" (click)="abrirUrl('web')"></ion-item>
-    </ion-card-content>
-  </ion-card>
-  <ion-card>
-    <ion-card-header>
-      <ion-img src="{{imagen}}"></ion-img>
-      <ion-card-title>
-        Descripción
-      </ion-card-title>      
-    </ion-card-header>
-    <ion-card-content>
-      {{descripcion}}
-      {{impactos}}
+      <ion-grid>
+        <ion-row text-center>
+          <ion-col>
+              <ion-label><h1>{{empresa.rfc}}</h1></ion-label>
+          </ion-col>
+        </ion-row>
+        <ion-row text-center>
+          <ion-col><ion-label bold>Categorías</ion-label></ion-col>
+          <ion-col *ngFor="let cat of categorias">
+            <ion-label color="ecology">{{cat.categoria}}</ion-label>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="3">
+            <ion-button color="facebook" (click)="abrirUrl('facebook')">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col size="3">
+            <ion-button color="instagram" (click)="abrirUrl('instagram')">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col size="3">
+            <ion-button color="primary" (click)="abrirUrl('web')">
+              <ion-icon name="globe"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col size="3">
+            <ion-button color="secondary">
+              <ion-icon name="contact"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-button expand="block" color="ecology" (click)="retos()">R E T O S</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-img src="{{empresa.imagen}}"></ion-img>
+      <div class="ion-text-justify">
+        <h2>{{empresa.descripcion}}</h2>
+      </div>
+      <br>
+      <ion-note color="ecology"><h1>¿Sabias que... </h1></ion-note><h1>{{empresa.funfact}}?</h1>
     </ion-card-content>
   </ion-card>
 </ion-content>

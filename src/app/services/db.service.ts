@@ -8,18 +8,36 @@ export interface Empresa{
   descripcion: string;
 }
 
+export interface Reto{
+  fraseimagen: string;
+  imagen: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class DbService {
 
   private empresasColeccion: AngularFirestoreCollection<Empresa>;
+  private retosColeccion: AngularFirestoreCollection<Reto>;
   private empresas: Observable<Empresa[]>;
+  private retos: Observable<Reto[]>;
 
   constructor(private afs: AngularFirestore) {
     this.empresasColeccion = afs.collection<Empresa>('empresas');
+    this.retosColeccion = afs.collection<Reto>('retos');
 
     this.empresas = this.empresasColeccion.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const informacion = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { id, ...informacion };
+        });
+      })
+    );
+
+    this.retos = this.retosColeccion.snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {
           const informacion = a.payload.doc.data();
@@ -36,6 +54,22 @@ export class DbService {
 
   getEmpresa(id){
     return this.empresasColeccion.doc<Empresa>(id).valueChanges();
+  }
+
+  getImpactos(id){
+    return this.empresasColeccion.doc<Empresa>(id).collection('impactos').valueChanges();
+  }
+
+  getCategorias(id){
+    return this.empresasColeccion.doc<Empresa>(id).collection('categorias').valueChanges();
+  }
+
+  getRetos(id){
+    return this.empresasColeccion.doc(id).collection('retos').valueChanges();
+  }
+
+  getTodosRetos(){
+    return this.retos;
   }
 
   collection$(path, query?) {
