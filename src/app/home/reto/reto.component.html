@@ -25,9 +25,19 @@
       <ion-text>
         <h4>Por cada litro de gasolina consumido se generan 2.4 kg de CO2?</h4>
       </ion-text>
-      <img id="imagenCam" src="" alt="">
     </ion-item>
   </ion-list>
+  <ion-button (click)="addImageWaterMark()">Animo</ion-button>
+  <ion-card>
+    <ion-card-content>
+      <img [src]="originalImage">
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-content>
+      <img #previewImage>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
 
 <ion-footer no-border>

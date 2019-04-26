@@ -18,7 +18,7 @@ export class HomePage implements OnInit {
 
   constructor(private dbServicio: DbService, private social: SocialSharing, public controlModal: ModalController, public alerta: AlertController, public router:Router, public auth: AuthService) { }
 
-retos:any;
+  retos:any;
 
   async compartir(){
     this.social.shareViaFacebookWithPasteMessageHint(null,null,'ekoot.mx',null).then(() => {

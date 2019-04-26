@@ -4,8 +4,8 @@ import { TutorialGuard } from './guards/tutorial.guard';
 import { InicialGuard } from './guards/inicial.guard';
 
 const routes: Routes = [
-  { path: '', loadChildren: './tabs/tabs.module#TabsPageModule', canActivate: [InicialGuard]},
-  // { path: '', loadChildren: './tabs/tabs.module#TabsPageModule'},
+  // { path: '', loadChildren: './tabs/tabs.module#TabsPageModule', canActivate: [InicialGuard]},
+  { path: '', loadChildren: './tabs/tabs.module#TabsPageModule'},
   { path: 'home', loadChildren: './home/home.module#HomePageModule'},
   { path: 'acs', loadChildren: './acs/acs.module#AcsPageModule' },
   { path: 'empresas', loadChildren: './empresas/empresas.module#EmpresasPageModule' },
