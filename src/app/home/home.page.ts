@@ -97,11 +97,12 @@ export class HomePage implements OnInit {
   }
 
   async cumplirReto(){
-    const modal1 = await this.controlModal.create({
-      component: RetoComponent,
-      componentProps: { value: 123 }
-    });
-    await modal1.present();
+    // const modal1 = await this.controlModal.create({
+    //   component: RetoComponent,
+    //   componentProps: { value: 123 }
+    // });
+    // await modal1.present();
+    this.router.navigateByUrl('/retox/r1');
   }
 
   ngOnInit() {

@@ -1,9 +1,57 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>retox</ion-title>
-  </ion-toolbar>
+<ion-header class="retoTop">
+  <ion-card class="card1">
+    <ion-card-content>
+      <ion-text color="light" class="centrar1">
+          <h1>{{fraseimagen}}</h1>
+        </ion-text>
+    </ion-card-content>
+  </ion-card>
+  <ion-item class="centrar1">
+    <ion-label>
+      Patrocinado por: &nbsp;
+      <img src="../assets/img/sponsor/mercurio.jpg" alt="" width="30%">  
+    </ion-label>    
+  </ion-item>  
 </ion-header>
 
-<ion-content padding>
+<ion-content>
+  <ion-list lines="none">
+    <ion-item lines="none">
+      <ion-text color="primary">
+        <h1>¿Sabias que..</h1>
+      </ion-text>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-text>
+        <h4>{{sabiasque}}</h4>
+      </ion-text>
+    </ion-item>
+  </ion-list>
+  <!-- <ion-button expand="full  " (click)="addImageWaterMark()">AgregarWaterMark</ion-button> -->
 
+  <!-- <ion-card *ngIf="originalImage">
+    <ion-card-header>Original</ion-card-header>
+    <ion-card-content>
+      <img [src]="originalImage">
+    </ion-card-content>
+  </ion-card>
+  <ion-card *ngIf="originalImage">
+    <ion-card-header>Watermark</ion-card-header>
+    <ion-card-content>
+      <img #previewImage>
+    </ion-card-content>
+  </ion-card> -->
 </ion-content>
+
+<ion-footer no-border>
+  <ion-toolbar class="retoFooter">
+    <ion-card color="primary">
+      <ion-card-content>
+        <ion-text>
+          <h4>RETO: {{reto}}</h4>
+        </ion-text>
+      </ion-card-content>
+    </ion-card>
+    <ion-button fill="outline" color="primary" expand="block" (click)="funcionCamara()">C U M P L I R</ion-button>
+  </ion-toolbar>
+</ion-footer>

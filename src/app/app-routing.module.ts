@@ -14,7 +14,8 @@ const routes: Routes = [
   { path: 'empresa', loadChildren: './empresa/empresa.module#EmpresaPageModule' },
   { path: 'empresa/:id', loadChildren: './empresa/empresa.module#EmpresaPageModule'},
   { path: 'retos', loadChildren: './retos/retos.module#RetosPageModule' },
-  { path: 'retos/:id', loadChildren: './retos/retos.module#RetosPageModule' },  { path: 'retox', loadChildren: './retox/retox.module#RetoxPageModule' }
+  { path: 'retos/:id', loadChildren: './retos/retos.module#RetosPageModule' },
+  { path: 'retox/:id', loadChildren: './retox/retox.module#RetoxPageModule' }
 
 ];
 @NgModule({

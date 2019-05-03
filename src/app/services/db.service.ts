@@ -98,6 +98,10 @@ export class DbService {
     return this.empresasColeccion.doc(id).collection('retos').valueChanges();
   }
 
+  getInfoReto(id){
+    return this.retosColeccion.doc(id).valueChanges();
+  }
+
   getTodosRetos(){
     return this.retos;
   }
