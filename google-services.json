@@ -1,39 +1,44 @@
 {
   "project_info": {
-    "project_number": "980791693184",
-    "firebase_url": "https://ekootapp-1-2.firebaseio.com",
-    "project_id": "ekootapp-1-2",
-    "storage_bucket": "ekootapp-1-2.appspot.com"
+    "project_number": "792448135111",
+    "firebase_url": "https://ekoot-1-3.firebaseio.com",
+    "project_id": "ekoot-1-3",
+    "storage_bucket": "ekoot-1-3.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:980791693184:android:ad89c4e8e9bec834",
+        "mobilesdk_app_id": "1:792448135111:android:ad89c4e8e9bec834",
         "android_client_info": {
           "package_name": "mx.ekoot.app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "980791693184-1pd4c47dffapn69v09l1omduvl1rfain.apps.googleusercontent.com",
+          "client_id": "792448135111-u7oe2ailj393u9c7q3387n8hqmb1vhhj.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBdCcdYUQsbeGzLCwWS7a8O2J7VWloE3VA"
+          "current_key": "AIzaSyDmx_iw4-ZzRpTapfVmztfF2ieFwZsZEN8"
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 2
+          "other_platform_oauth_client": [
+            {
+              "client_id": "792448135111-u7oe2ailj393u9c7q3387n8hqmb1vhhj.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "792448135111-jfvivkj8bssbmiip3eeods9vgbcbia4s.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "mx.ekoot.app"
+              }
+            }
+          ]
         }
       }
     }

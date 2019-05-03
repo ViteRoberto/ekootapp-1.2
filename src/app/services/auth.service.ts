@@ -18,6 +18,8 @@ import { Facebook } from '@ionic-native/facebook/ngx';
 export class AuthService {
   user$: Observable<any>;
   infoFacebook:any;
+  infoUser: any;
+  userInfo: Observable<any>;
   authNose:any;
 
   constructor(
@@ -28,7 +30,7 @@ export class AuthService {
     public facebook: Facebook
   ) {
     this.user$ = this.afAuth.authState.pipe(
-      switchMap(user => (user ? db.doc$('users/${user.uid}') : of(null)))
+      switchMap(user => (user ? db.doc$('usuarios/${user.uid}') : of(null)))
     );
   }
 
@@ -36,7 +38,6 @@ export class AuthService {
     return this.facebook.login(['email'])
     .then( response => {
       const facebookCredential = firebase.auth.FacebookAuthProvider
-      // const facebookCredential = Firebase.auth.FacebookAuthProvider
         .credential(response.authResponse.accessToken);
 
       firebase.auth().signInWithCredential(facebookCredential)
@@ -44,6 +45,25 @@ export class AuthService {
           console.log("Firebase success: " + JSON.stringify(success)); 
           this.infoFacebook = success;
           this.guardar.set('loggeado',true);
+
+          let uid = success.uid;
+          this.guardar.set('uid',uid);
+          let email = success.email;
+          // this.guardar.set('email',email);
+          let displayName = success.displayName;
+          // this.guardar.set('displayName',displayName);
+          let photoURL = success.photoURL;
+          // this.guardar.set('photoURL',photoURL);
+          let isAnonymous = success.isAnonymous;
+          // this.guardar.set('isAnonymous',isAnonymous);
+
+          let ekoins = 0;
+          let pp = 0;
+          let bp = 0;
+          let rn = 0;
+          let ds = 0;
+
+          this.updateUserData({uid, email, displayName, photoURL, isAnonymous, ekoins, pp, bp, rn, ds});
           this.router.navigateByUrl('/');
         });
 
@@ -54,18 +74,25 @@ export class AuthService {
 
   async anonymousLogin(){
     const credencial = await this.afAuth.auth.signInAnonymously();
-    return await this.updateUserData(credencial.user);
+    // return await this.updateUserData(credencial.user);
   }
 
-  private updateUserData({ uid, email, displayName, photoURL, isAnonymous }){
-    const path = 'users/${uid}';
-    
+  private updateUserData({ uid, email, displayName, photoURL, isAnonymous, ekoins, pp, bp, rn, ds }){
+    let path = 'usuarios/';
+    path = path.concat(uid);
+
     const data = {
       uid,
       email,
       displayName,
       photoURL,
-      isAnonymous
+      isAnonymous,
+      ekoins,
+      pp,
+      bp,
+      rn,
+      ds
+
     };
 
     return this.db.updateAt(path, data);

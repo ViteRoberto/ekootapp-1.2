@@ -9,6 +9,8 @@ import { DbService } from '../services/db.service';
 
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 
+import { Storage } from '@ionic/storage';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
@@ -16,9 +18,21 @@ import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 })
 export class HomePage implements OnInit {
 
-  constructor(private dbServicio: DbService, private social: SocialSharing, public controlModal: ModalController, public alerta: AlertController, public router:Router, public auth: AuthService) { }
+  constructor(private guardar: Storage, private dbServicio: DbService, private social: SocialSharing, public controlModal: ModalController, public alerta: AlertController, public router:Router, public auth: AuthService) { }
 
   retos:any;
+
+  uid:string = "";
+  email:string = "";
+  displayName:string = "";
+  photoURL:string = "";
+
+  ekoins:number;
+  pp:number;
+  bp:number;
+  rn:number;
+  ds:number;
+
 
   async compartir(){
     this.social.shareViaFacebookWithPasteMessageHint(null,null,'ekoot.mx',null).then(() => {
@@ -40,8 +54,9 @@ export class HomePage implements OnInit {
   async datosPerfil(){
     const alertaPerfil = await this.alerta.create({
       header: 'Perfil',
-      subHeader: this.auth.infoFacebook.displayName,
-      message: '<img src="'+this.auth.infoFacebook.photoURL+'">',
+      subHeader: this.displayName,
+      // message: '<img src="'+this.auth.infoFacebook.photoURL+'">',
+      message: '<img src="'+this.photoURL+'">',
       buttons: ['OK']
     });
     await alertaPerfil.present();
@@ -54,7 +69,7 @@ export class HomePage implements OnInit {
   async respeto(){
     const alertaRespeto = await this.alerta.create({
       header: 'RESPETO A LA NATURALEZA',
-      message: '<ion-grid><ion-row><ion-col><img src="../../assets/img/acciones/rn.png"></ion-col><ion-col><h1>+26 Ptos</h1></ion-col></ion-row></ion-grid><p>Son todas aquellas acciones que procuran el medio ambiente</br>',
+      message: '<ion-grid><ion-row><ion-col><img src="../../assets/img/acciones/rn.png"></ion-col><ion-col><h1>'+this.rn+' Ptos</h1></ion-col></ion-row></ion-grid><p>Son todas aquellas acciones que procuran el medio ambiente</br>',
       cssClass: 'alertaRespeto',
       buttons: ['Más info...']
     });
@@ -64,7 +79,7 @@ export class HomePage implements OnInit {
   async desarrollo(){
     const alertaDesarrollo = await this.alerta.create({
       header: 'DESARROLLO SOCIAL',
-      message: '<ion-grid><ion-row><ion-col><img src="../../assets/img/acciones/ds.png"></ion-col><ion-col><h1>+43 Ptos</h1></ion-col></ion-row></ion-grid><p>Son todas aquellas acciones que fomentan un crecimiento en sociedad</br>',
+      message: '<ion-grid><ion-row><ion-col><img src="../../assets/img/acciones/ds.png"></ion-col><ion-col><h1>'+this.ds+' Ptos</h1></ion-col></ion-row></ion-grid><p>Son todas aquellas acciones que fomentan un crecimiento en sociedad</br>',
       cssClass: 'alertaDesarrollo',
       buttons: ['Más info...']
     });
@@ -74,7 +89,7 @@ export class HomePage implements OnInit {
   async bienestar(){
     const alertaBienestar = await this.alerta.create({
       header: 'BIENESTAR PERSONAL',
-      message: '<ion-grid><ion-row><ion-col><img src="../../assets/img/acciones/bp.png"></ion-col><ion-col><h1>+12 Ptos</h1></ion-col></ion-row></ion-grid><p>Son todas aquellas acciones que realizar en pro de un crecimiento y salud personal</br>',
+      message: '<ion-grid><ion-row><ion-col><img src="../../assets/img/acciones/bp.png"></ion-col><ion-col><h1>'+this.bp+' Ptos</h1></ion-col></ion-row></ion-grid><p>Son todas aquellas acciones que realizar en pro de un crecimiento y salud personal</br>',
       cssClass: 'alertaBienestar',
       buttons: ['Más info...']
     });
@@ -95,6 +110,21 @@ export class HomePage implements OnInit {
       this.retos = res;
       console.log(this.retos);
     })
+
+    this.guardar.get('uid').then(uid => {
+      this.uid = uid;
+      this.dbServicio.getUsuario(uid).subscribe(res => {
+        this.displayName = res.displayName;
+        this.email = res.email;
+        this.photoURL = res.photoURL;
+        this.pp = res.pp;
+        this.bp = res.bp;
+        this.rn = res.rn;
+        this.ds = res.ds;
+      })
+    })
+
+
   }
 
 }

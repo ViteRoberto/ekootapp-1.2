@@ -13,6 +13,19 @@ export interface Reto{
   imagen: string;
 }
 
+export interface Usuario{
+  uid:string;
+  email:string;
+  displayName:string;
+  photoURL:string;
+  isAnonnymous:string;
+  ekoins:number;
+  pp:number;
+  bp:number;
+  rn:number;
+  ds:number;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -20,12 +33,25 @@ export class DbService {
 
   private empresasColeccion: AngularFirestoreCollection<Empresa>;
   private retosColeccion: AngularFirestoreCollection<Reto>;
+  private usuariosColeccion: AngularFirestoreCollection<Usuario>;
   private empresas: Observable<Empresa[]>;
   private retos: Observable<Reto[]>;
+  private usuarios: Observable<Usuario[]>;
 
   constructor(private afs: AngularFirestore) {
     this.empresasColeccion = afs.collection<Empresa>('empresas');
     this.retosColeccion = afs.collection<Reto>('retos');
+    this.usuariosColeccion = afs.collection<Usuario>('usuarios');
+
+    this.usuarios = this.usuariosColeccion.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const informacion = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { id, ...informacion };
+        });
+      })
+    );
 
     this.empresas = this.empresasColeccion.snapshotChanges().pipe(
       map(actions => {
@@ -46,6 +72,10 @@ export class DbService {
         });
       })
     );
+  }
+
+  getUsuario(id){
+    return this.usuariosColeccion.doc<Usuario>(id).valueChanges();
   }
 
   getEmpresas(){

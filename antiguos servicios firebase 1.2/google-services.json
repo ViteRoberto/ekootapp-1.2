@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "980791693184",
+    "firebase_url": "https://ekootapp-1-2.firebaseio.com",
+    "project_id": "ekootapp-1-2",
+    "storage_bucket": "ekootapp-1-2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:980791693184:android:ad89c4e8e9bec834",
+        "android_client_info": {
+          "package_name": "mx.ekoot.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "980791693184-1pd4c47dffapn69v09l1omduvl1rfain.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdCcdYUQsbeGzLCwWS7a8O2J7VWloE3VA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

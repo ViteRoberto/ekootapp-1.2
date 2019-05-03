@@ -16,7 +16,7 @@ export class InicialGuard implements CanActivate {
       const estaLogin = await this.guardar.get('loggeado');
 
       if(!estaLogin){
-        // this.router.navigateByUrl('/inicial');
+        this.router.navigateByUrl('/inicial');
       }
 
       return estaLogin;
