@@ -1,7 +1,7 @@
 <ion-content padding>
   <ion-list>
 
-    <ion-item *ngFor="let item of empresas" lines="inset" button [routerLink]="['/empresa',item.id]" ion-text-center>
+    <ion-item *ngFor="let item of empresasFiltradas" lines="inset" button [routerLink]="['/empresa',item.id]" ion-text-center>
       <ion-img src="{{item.logo}}" class="centrar-imagen"></ion-img>
     </ion-item>
     

@@ -18,7 +18,7 @@ export class InicialPage implements OnInit {
   }
 
   entrar(){
-    this.auth.facebookLogin();
+    // this.auth.facebookLogin();
     this.router.navigateByUrl('/');
   }
 

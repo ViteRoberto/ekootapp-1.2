@@ -5,6 +5,8 @@ import { AlertController } from '@ionic/angular';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import * as watermark from 'watermarkjs';
 
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+
 @Component({
   selector: 'app-retox',
   templateUrl: './retox.page.html',
@@ -23,7 +25,7 @@ export class RetoxPage implements OnInit {
   sabiasque:string;
   reto:string;
 
-  constructor(private alerta: AlertController, private router: Router, private activa:ActivatedRoute, private db: DbService, private camara: Camera) { }
+  constructor(private compartir: SocialSharing, private alerta: AlertController, private router: Router, private activa:ActivatedRoute, private db: DbService, private camara: Camera) { }
 
   async funcionCamara(){
     const options: CameraOptions = {
@@ -46,7 +48,7 @@ export class RetoxPage implements OnInit {
             .image(watermark.image.lowerRight(0.6))
             .then(img => {
               // this.waterMarkImage.nativeElement.src = img.src;
-              this.lanzarAlerta(img.src);
+              this.compartirFacebook(img.src);
             });
         });
 
@@ -67,6 +69,28 @@ export class RetoxPage implements OnInit {
       }]
     });
     await alertaCompartir.present();
+  }
+
+  async alertando(mensaje){
+    const alerta1 = await this.alerta.create({
+      header: 'COMPARTI',
+      message: mensaje,
+      buttons: [{
+        text: 'Ok',
+        handler: () => {
+          this.router.navigateByUrl('/');
+        }
+      }]
+    });
+    await alerta1.present();
+  }
+
+  async compartirFacebook(file){
+    this.compartir.shareViaFacebook('Your Actions Matter',file,'ekoot.mx').then(mensaje => {
+      this.alertando(mensaje);
+    }).catch((e) => {
+      this.alertando(e);
+    });
   }
 
   // async addImageWaterMark(){

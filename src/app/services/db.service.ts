@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 export interface Empresa{
   nombre: string;
   descripcion: string;
+  activo: boolean;
 }
 
 export interface Reto{
@@ -80,6 +81,8 @@ export class DbService {
 
   getEmpresas(){
     return this.empresas;
+    // var ref = this.afs.collection('empresas');
+    // return this.empresasColeccion.ref.where('activo','==',true);
   }
 
   getEmpresa(id){
